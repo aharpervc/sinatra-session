@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang='en'>
+  <head>
+    <title>: Sinatra::Session [Sinatra::Session API Documentation]</title>
+    <meta content='text/html; charset=utf8' http-equiv='Content-Type'>
+    <link href='../../rdoc-style.css' media='screen' rel='stylesheet' type='text/css'>
+    <script type='text/javascript'>
+      //<![CDATA[
+        function popupCode(url) {
+          window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+        }
+        
+        function toggleCode(id) {
+          var code = document.getElementById(id)
+        
+          code.style.display = code.style.display != 'block' ? 'block' : 'none'
+          return true
+        }
+        
+        // Make codeblocks hidden by default
+        document.writeln('<' + 'style type="text/css">.method .source pre { display: none }<\/style>')
+      //]]>
+    </script>
+  </head>
+  <body class='page'>
+    <div class='class' id='wrapper'>
+      <div class='header'>
+        <h1 class='name'>
+          <span class='type'>Module</span>
+          Sinatra::Session
+        </h1>
+        <ol class='paths'>
+          <li>
+            <a href="../../files/lib/sinatra/session_rb.html">lib/sinatra/session.rb</a>
+          </li>
+        </ol>
+      </div>
+      <div id='content'>
+        <div id='text'>
+          <div id='description'>
+            <p>
+            Simple, secure sessions for <a href="../Sinatra.html">Sinatra</a>.
+            </p>
+            <p>
+            <a
+            href="http://mjijackson.com/sinatra-session">mjijackson.com/sinatra-session</a>
+            </p>
+          </div>
+          <div id='method-list'>
+            <h2>Methods</h2>
+            <h3>public class</h3>
+            <ol>
+              <li><a href="#M000001">registered</a></li>
+            </ol>
+          </div>
+          <div id='section'>
+            <div id='class-list'>
+              <h2>Classes and Modules</h2>
+              Module <a href="Session/Cookie.html" class="link">Sinatra::Session::Cookie</a><br />
+              Module <a href="Session/Helpers.html" class="link">Sinatra::Session::Helpers</a><br />
+            </div>
+            <div id='methods'>
+              <h2>Public class methods</h2>
+              <div class='method public-class' id='method-M000001'>
+                <a name='M000001'></a>
+                <div class='synopsis'>
+                  <span class='name'>registered</span>
+                  <span class='arguments'>(app)</span>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000001-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000001-source'>    <span class="ruby-comment cmt"># File lib/sinatra/session.rb, line 49</span>&#x000A;49:     <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">registered</span>(<span class="ruby-identifier">app</span>)&#x000A;50:       <span class="ruby-identifier">app</span>.<span class="ruby-identifier">helpers</span> <span class="ruby-constant">Session</span><span class="ruby-operator">::</span><span class="ruby-constant">Helpers</span>&#x000A;51: &#x000A;52:       <span class="ruby-comment cmt"># This should be set to the redirect URL the client will be sent to if</span>&#x000A;53:       <span class="ruby-comment cmt"># the session is not valid.</span>&#x000A;54:       <span class="ruby-identifier">app</span>.<span class="ruby-identifier">set</span> <span class="ruby-identifier">:session_fail</span>, <span class="ruby-value str">'/login'</span>&#x000A;55: &#x000A;56:       <span class="ruby-comment cmt"># Parameters for the session cookie.</span>&#x000A;57:       <span class="ruby-identifier">app</span>.<span class="ruby-identifier">set</span> <span class="ruby-identifier">:session_name</span>, <span class="ruby-value str">'sinatra.session'</span>&#x000A;58:       <span class="ruby-identifier">app</span>.<span class="ruby-identifier">set</span> <span class="ruby-identifier">:session_path</span>, <span class="ruby-value str">'/'</span>&#x000A;59:       <span class="ruby-identifier">app</span>.<span class="ruby-identifier">set</span> <span class="ruby-identifier">:session_domain</span>, <span class="ruby-keyword kw">nil</span>&#x000A;60:       <span class="ruby-identifier">app</span>.<span class="ruby-identifier">set</span> <span class="ruby-identifier">:session_expire</span>, <span class="ruby-keyword kw">nil</span>&#x000A;61:       <span class="ruby-identifier">app</span>.<span class="ruby-identifier">set</span> <span class="ruby-identifier">:session_secret</span>, <span class="ruby-keyword kw">nil</span>&#x000A;62: &#x000A;63:       <span class="ruby-identifier">app</span>.<span class="ruby-identifier">use</span>(<span class="ruby-constant">Session</span><span class="ruby-operator">::</span><span class="ruby-constant">Cookie</span>) <span class="ruby-keyword kw">do</span>&#x000A;64:         { <span class="ruby-identifier">:key</span>          =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">app</span>.<span class="ruby-identifier">session_name</span>,&#x000A;65:           <span class="ruby-identifier">:path</span>         =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">app</span>.<span class="ruby-identifier">session_path</span>,&#x000A;66:           <span class="ruby-identifier">:domain</span>       =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">app</span>.<span class="ruby-identifier">session_domain</span>,&#x000A;67:           <span class="ruby-identifier">:expire_after</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">app</span>.<span class="ruby-identifier">session_expire</span>,&#x000A;68:           <span class="ruby-identifier">:secret</span>       =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">app</span>.<span class="ruby-identifier">session_secret</span>&#x000A;69:         }&#x000A;70:       <span class="ruby-keyword kw">end</span>&#x000A;71:     <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id='footer-push'></div>
+    </div>
+    <div id='footer'>
+      <a href="http://github.com/mislav/hanna/tree/master"><strong>Hanna</strong> RDoc template</a>
+    </div>
+  </body>
+</html>

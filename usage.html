@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>Sinatra::Session</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h1>sinatra-session</h1>
+            <ul>
+                <li><a href="api/index.html">API</a></li>
+                <li><a href="http://github.com/mjijackson/sinatra-session/issues">Issues</a></li>
+                <li><a href="http://github.com/mjijackson/sinatra-session">Code</a></li>
+                <li><a href="usage.html">Usage</a></li>
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </div>
+        <div id="content"><h2>Usage</h2>
+
+<p>As with all Sinatra <a href="http://www.sinatrarb.com/extensions.html">extensions</a>, Sinatra::Session may be used in both classic
+and modular-style apps. First, classic.</p>
+
+<pre><code>require 'sinatra'
+require 'sintra/session'
+
+set :session_fail, '/login'
+set :session_secret, 'So0perSeKr3t!'
+
+get '/' do
+  session!
+  'Hello, ' + session[:name] + '! Click &lt;a href="/logout"&gt;here&lt;/a&gt; to logout.'
+end
+
+get '/login' do
+  if session?
+    redirect '/'
+  else
+    '&lt;form method="POST" action="/login"&gt;' +
+    'Please enter your name: &lt;input type="text" name="name"&gt;' +
+    '&lt;input type="submit" value="Submit"&gt;' +
+    '&lt;/form&gt;'
+  end
+end
+
+post '/login' do
+  if params[:name]
+    session_start!
+    session[:name] = params[:name]
+    redirect '/'
+  else
+    redirect '/login'
+  end
+end
+
+get '/logout' do
+  session_end!
+  redirect '/'
+end
+</code></pre>
+
+<p>Modular apps use very similar code but must also mixin Sinatra::Session via
+Sinatra#register, like so:</p>
+
+<pre><code>require 'sinatra/base'
+require 'sinatra/session'
+
+class MyApp &lt; Sinatra::Base
+  register Sinatra::Session
+
+  # insert settings and routes here, same as in
+  # classic example above
+end
+</code></pre>
+</div>
+        <div id="footer">
+            <p><a href="license.html" rel="license">Copyright</a> &copy; 2010 <a href="http://mjijackson.com/about" rel="me author">Michael Jackson</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -22,7 +22,7 @@ h1, h2, h3 {
 h1 {
   font-size: 32px;
 }
-h1, h2, h3, p, pre, ul, ol {
+h1, h2, h3, p, pre, ul, ol, table {
   margin: 0 0 18px 0;
 }
 ol, ul {
@@ -43,6 +43,13 @@ pre {
 }
 strong {
   font-weight: bold;
+}
+table th {
+  text-align: left;
+}
+table td {
+  padding: 5px 10px 0 0;
+  vertical-align: top;
 }
 ::selection {
   background: rgba(200,200,200,0.5);

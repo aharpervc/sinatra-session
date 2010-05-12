@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>Sinatra::Session</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h1>sinatra-session</h1>
+            <ul>
+                <li><a href="api/index.html">API</a></li>
+                <li><a href="http://github.com/mjijackson/sinatra-session/issues">Issues</a></li>
+                <li><a href="http://github.com/mjijackson/sinatra-session">Code</a></li>
+                <li><a href="usage.html">Usage</a></li>
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </div>
+        <div id="content"><p><strong>Sinatra::Session</strong> is a small <a href="http://www.sinatrarb.com/extensions.html">extension</a> for <a href="http://www.sinatrarb.com/">Sinatra</a> apps that provides several
+convenient settings and methods when working with <a href="http://en.wikipedia.org/wiki/HTTP_cookie">cookie</a>-based sessions.</p>
+
+<table>
+<thead>
+<tr>
+<th>Setting Name        </th>
+<th> Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>session_fail</code>      </td>
+<td> A URL in your app that the client will be redirected to when <code>session!</code> is called and the session is not valid. Defaults to <code>'/login'</code></td>
+</tr>
+<tr>
+<td><code>session_name</code>      </td>
+<td> The name to use for the session cookie</td>
+</tr>
+<tr>
+<td><code>session_path</code>      </td>
+<td> The session cookie path</td>
+</tr>
+<tr>
+<td><code>session_domain</code>    </td>
+<td> The session cookie domain</td>
+</tr>
+<tr>
+<td><code>session_expire</code>    </td>
+<td> The number of seconds from now the cookie will be valid</td>
+</tr>
+<tr>
+<td><code>session_secret</code>    </td>
+<td> A secret key that is used to check the integrity of session data</td>
+</tr>
+</tbody>
+</table>
+
+
+<table>
+<thead>
+<tr>
+<th>Helper Method                 </th>
+<th> Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>session_start!</code>              </td>
+<td> Starts the session</td>
+</tr>
+<tr>
+<td><code>session_end!(destroy=true)</code>  </td>
+<td> Ends the session. If <code>destroy</code> is false then session data will be preserved, even though future calls to <code>session?</code> will return false</td>
+</tr>
+<tr>
+<td><code>session?</code>                    </td>
+<td> Returns true if the session is valid</td>
+</tr>
+<tr>
+<td><code>session!</code>                    </td>
+<td> Redirects the client to the URL specified in the <code>session_fail</code> option unless the session is valid</td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>Installation</h2>
+
+<p>Via <a href="http://rubygems.org/">RubyGems</a>:</p>
+
+<pre><code>$ sudo gem install sinatra-session
+</code></pre>
+
+<p>From a local copy:</p>
+
+<pre><code>$ git clone git://github.com/mjijackson/sinatra-session.git
+$ cd sinatra-session
+$ rake package &amp;&amp; sudo rake install
+</code></pre>
+</div>
+        <div id="footer">
+            <p><a href="license.html" rel="license">Copyright</a> &copy; 2010 <a href="http://mjijackson.com/about" rel="me author">Michael Jackson</a></p>
+        </div>
+    </div>
+</body>
+
+</html>
